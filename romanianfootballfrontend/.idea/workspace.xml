@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e278f540-c350-40c6-a0c4-4e224cf5fab8" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ElmWorkspace">
+    <elmProjects />
+    <settings elmCompilerPath="C:\Program Files (x86)\Elm\0.19.1\bin\elm.exe" lamderaCompilerPath="null" elmFormatPath="C:\Users\user\AppData\Roaming\npm\elm-format.cmd" elmTestPath="C:\Users\user\AppData\Roaming\npm\elm-test.cmd" elmReviewPath="null" isElmFormatOnSaveEnabled="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTTP Request" />
+        <option value="package.json" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2olWTUYyM2MBpAB8PuhT0cFG8vD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.All in console.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #10.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #11.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #12.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #13.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #14.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #3.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #4.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #5.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #6.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #7.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #8.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | #9.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | 2. Login with the user.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | Admin: Get all users.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | GET request to example server.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.console | Login admin user.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.RomanianFootballBackend [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.RomanianFootballBackend [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.RomanianFootballBackend [install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.RomanianFootballBackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.elm.workspace.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;httpClient&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager" selected="Spring Boot.RomanianFootballBackendApplication">
+    <configuration name="console | #10" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#10" index="10" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="console | #12" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#12" index="12" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="console | #13" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#13" index="13" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="console | #14" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#14" index="14" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="console | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#6" index="6" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="RomanianFootballBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="RomanianFootballBackend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.football.RomanianFootballBackend.RomanianFootballBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.console | #10" />
+        <item itemvalue="HTTP Request.console | #6" />
+        <item itemvalue="HTTP Request.console | #12" />
+        <item itemvalue="HTTP Request.console | #13" />
+        <item itemvalue="HTTP Request.console | #14" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e278f540-c350-40c6-a0c4-4e224cf5fab8" name="Changes" comment="" />
+      <created>1731444651404</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731444651404</updated>
+      <workItem from="1731444652817" duration="98000" />
+      <workItem from="1731444757874" duration="66000" />
+      <workItem from="1731445096994" duration="169000" />
+      <workItem from="1731445274808" duration="612000" />
+      <workItem from="1731616738945" duration="38000" />
+      <workItem from="1732565844287" duration="6700000" />
+      <workItem from="1732628192295" duration="530000" />
+      <workItem from="1734953707772" duration="2846000" />
+      <workItem from="1734960656846" duration="165000" />
+      <workItem from="1734960828870" duration="45000" />
+      <workItem from="1734960880457" duration="10743000" />
+      <workItem from="1734977086774" duration="9673000" />
+      <workItem from="1734999610735" duration="2588000" />
+      <workItem from="1735030388396" duration="621000" />
+      <workItem from="1735046352711" duration="4742000" />
+      <workItem from="1735068017194" duration="5412000" />
+      <workItem from="1735078337956" duration="342000" />
+      <workItem from="1735083776089" duration="1549000" />
+      <workItem from="1735132367626" duration="6586000" />
+      <workItem from="1735152671600" duration="1675000" />
+      <workItem from="1735415650581" duration="2648000" />
+      <workItem from="1735427243360" duration="1583000" />
+      <workItem from="1735600437930" duration="2000000" />
+      <workItem from="1735644477612" duration="1176000" />
+      <workItem from="1735651929903" duration="11104000" />
+      <workItem from="1735669341842" duration="4952000" />
+      <workItem from="1735854708099" duration="1315000" />
+      <workItem from="1736103032094" duration="3816000" />
+      <workItem from="1736119981894" duration="1064000" />
+      <workItem from="1736175613635" duration="8915000" />
+      <workItem from="1736191400350" duration="3159000" />
+      <workItem from="1736203304803" duration="1208000" />
+      <workItem from="1736209000642" duration="1416000" />
+      <workItem from="1736241794202" duration="9689000" />
+      <workItem from="1736433299567" duration="13532000" />
+      <workItem from="1736489893682" duration="1340000" />
+      <workItem from="1736491844119" duration="2073000" />
+      <workItem from="1736500489080" duration="1420000" />
+      <workItem from="1736515054469" duration="8531000" />
+      <workItem from="1736543219239" duration="886000" />
+      <workItem from="1736550410272" duration="4159000" />
+      <workItem from="1736589751068" duration="6501000" />
+      <workItem from="1736599452061" duration="132000" />
+      <workItem from="1736614932964" duration="5298000" />
+      <workItem from="1736675153193" duration="1521000" />
+      <workItem from="1736689519008" duration="3506000" />
+      <workItem from="1736729967506" duration="2687000" />
+      <workItem from="1736782571716" duration="598000" />
+      <workItem from="1736872219573" duration="2091000" />
+      <workItem from="1737156127696" duration="1870000" />
+      <workItem from="1738344572659" duration="983000" />
+      <workItem from="1741090479358" duration="296000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
