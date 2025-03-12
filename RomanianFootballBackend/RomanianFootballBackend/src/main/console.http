@@ -1,0 +1,99 @@
+### GET request to example server
+GET http://localhost:8080/api/productInventory
+###
+
+### GET id request to example server
+GET http://localhost:8080/api/cart
+Authorization: Basic YWRtaW43QGV4YW1wbGUuY29tOmFkbWluMTIz
+###
+
+### GET id request to example server
+GET http://localhost:8080/api/user
+Authorization: Basic dGVzdDFAZXhhbXBsZS5jb206cGFzc3dvcmQxMjM=
+###
+
+### PUT request to example server
+PUT http://localhost:8080/api/orderItems/1
+Content-Type: application/json
+
+{
+  "quantity": 2
+}
+###
+
+### DELETE request to example server
+DELETE http://localhost:8080/api/user/7
+###
+
+### Register admin user
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin7@example.com",
+  "password": "admin123",
+  "role": "ADMIN"
+}
+###
+
+
+
+### 1. Register a user (don't specify role, it will be set to USER)
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test1@example.com",
+  "password": "password123"
+}
+###
+
+### Login admin user
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin7@example.com",
+  "password": "admin123"
+}
+###
+
+### 2. Login with the registered user
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test1@example.com",
+  "password": "password123"
+}
+###
+
+### Admin: Get all users
+GET http://localhost:8080/api/admin/user
+Authorization: Basic YWRtaW43QGV4YW1wbGUuY29tOmFkbWluMTIz
+###
+
+### 3. Access protected endpoint with authentication
+PUT http://localhost:8080/api/product/1
+Authorization: Basic YWRtaW43QGV4YW1wbGUuY29tOmFkbWluMTIz
+//Authorization: Basic eyJlbWFpbCI6ICJ0ZXN0MUBleGFtcGxlLmNvbSIsICJwYXNzd29yZCI6ICJwYXNzd29yZDEyMyJ9
+Content-Type: application/json
+
+{
+  "price": 69.99
+}
+###
+
+###
+GET http://localhost:8080/api/productInventory/product/1
+###
+
+### GET request to example server
+GET http://localhost:8080/api/product/1
+Authorization: Basic YWRtaW43QGV4YW1wbGUuY29tOmFkbWluMTIz
+###
+
+###
+GET http://localhost:8080/api/cart/user/2/items
+Authorization: Basic YWRtaW43QGV4YW1wbGUuY29tOmFkbWluMTIz
+###

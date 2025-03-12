@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Team A Jersey",
+    "description": "Official Team A jersey.",
+    "price": 50.00,
+    "team": "Team A",
+    "licenced": true
+  },
+  {
+    "id": 2,
+    "name": "Team B Jersey",
+    "description": "Official Team B jersey.",
+    "price": 55.00,
+    "team": "Team B",
+    "licenced": true
+  },
+  {
+    "id": 3,
+    "name": "Team C Jersey",
+    "description": "Replica Team C jersey.",
+    "price": 35.00,
+    "team": "Team C",
+    "licenced": true
+  }
+]
