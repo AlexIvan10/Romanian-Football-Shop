@@ -46,7 +46,7 @@ The system is divided into two main parts:
 
 ## Technology Stack 
 
-- **Frontend**: TypeScript, React, Bootstrap
+- **Frontend**: TypeScript, React, Material UI (MUI)
 - **Backend**: Java (Spring Boot)
 - **Database**: MySQL
 - **API**: REST API (for communication between frontend and backend)
@@ -59,7 +59,7 @@ The system is divided into two main parts:
 The platform follows the **Model-View-Controller (MVC)** architecture:
 
 - **Model**: Manages data and business logic, with a **MySQL database** storing products, users, orders, etc.
-- **View**: Developed with **TypeScript** and **React** to provide a dynamic and interactive user interface.
+- **View**: Developed with **TypeScript**, **React**, and **Material UI (MUI)** to provide a dynamic and interactive user interface with modern and responsive design elements.
 - **Controller**: Handles the logic and communication between the Model and View, implemented using **Java Spring**.
 
 The system ensures clear separation of concerns, scalability, and easy maintenance, making it efficient to manage and update.
