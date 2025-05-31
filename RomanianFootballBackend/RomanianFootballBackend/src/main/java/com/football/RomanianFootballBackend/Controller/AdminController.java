@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api/admin/user")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class AdminController {
     @Autowired
     private UserService userService;

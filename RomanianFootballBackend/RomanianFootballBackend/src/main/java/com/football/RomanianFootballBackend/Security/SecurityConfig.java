@@ -10,10 +10,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.http.HttpStatus;
 
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 
 @Configuration
@@ -25,6 +29,10 @@ public class SecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
+                .sessionManagement(session -> session
+                    .maximumSessions(1)
+                    .maxSessionsPreventsLogin(false)
+                )
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoints - no authentication needed
                         .requestMatchers("/api/auth/**").permitAll()
@@ -44,9 +52,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/productInventory/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/productInventory/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/productInventory/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/discount").hasRole("ADMIN")  // Creating new discounts
+                        .requestMatchers(HttpMethod.POST, "/api/discount").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/discount/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/discount/{id}").hasRole("ADMIN")  // Updating discount details
+                        .requestMatchers(HttpMethod.PUT, "/api/discount/{id}").hasRole("ADMIN")
 
                         // Authenticated user endpoints
                         .requestMatchers("/api/cart/**").authenticated()
@@ -56,13 +64,23 @@ public class SecurityConfig {
                         .requestMatchers("/api/user/**").authenticated()
                         .requestMatchers("/api/cart/user/**").authenticated()
                         .requestMatchers("/api/discount/validate").authenticated()
-                        .requestMatchers("/api/discount/*/use").authenticated()  // Allow any authenticated user to use discounts
+                        .requestMatchers("/api/discount/*/use").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/discount/**").authenticated()
 
                         .anyRequest().authenticated()
                 )
-                .httpBasic(basic -> {
-                });
+                .exceptionHandling(ex -> ex
+                    .authenticationEntryPoint((request, response, authException) -> {
+                        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                        response.setContentType("application/json");
+                        response.getWriter().write("{\"error\": \"Authentication required\"}");
+                    })
+                    .accessDeniedHandler((request, response, accessDeniedException) -> {
+                        response.setStatus(HttpStatus.FORBIDDEN.value());
+                        response.setContentType("application/json");
+                        response.getWriter().write("{\"error\": \"Access denied\"}");
+                    })
+                );
 
         return http.build();
     }

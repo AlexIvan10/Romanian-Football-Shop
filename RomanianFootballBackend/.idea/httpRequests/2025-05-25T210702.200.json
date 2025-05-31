@@ -1,0 +1,27 @@
+[
+  {
+    "id": 4,
+    "userId": 5,
+    "userEmail": "user@gmail.com",
+    "discountId": 2,
+    "discountCode": "STUDENT15",
+    "totalPrice": 339.98,
+    "status": "PENDING",
+    "city": "fgsdfg",
+    "street": "gsfdsd",
+    "number": "43",
+    "postalCode": "232",
+    "orderItems": [
+      {
+        "id": 4,
+        "productId": 1,
+        "productName": "FC Barcelona Home Shirt 2024/25",
+        "player": "Messi",
+        "number": "10",
+        "size": "S",
+        "quantity": 2,
+        "price": 399.98
+      }
+    ]
+  }
+]

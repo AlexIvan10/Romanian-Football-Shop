@@ -65,7 +65,26 @@ public class CartService {
         // Calculate price (if you're storing it in cart_items)
         cartItem.setPrice(product.getPrice().multiply(BigDecimal.valueOf(addToCartDTO.getQuantity())));
 
-        return cartItemsRepository.save(cartItem);
+        CartItems savedItem = cartItemsRepository.save(cartItem);
+
+        // Update cart total
+        updateCartTotal(cart.getId());
+
+        return savedItem;
+    }
+
+    @Transactional
+    public void updateCartTotal(Integer cartId) {
+        Cart cart = cartRepository.findById(cartId)
+                .orElseThrow(() -> new EntityNotFoundException("Cart not found"));
+
+        List<CartItems> items = cartItemsRepository.findByCartId(cartId);
+        BigDecimal total = items.stream()
+                .map(CartItems::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        cart.setTotalPrice(total);
+        cartRepository.save(cart);
     }
 
     public Cart updateCart(int id, Cart updatedCart) {

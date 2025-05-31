@@ -1,0 +1,1 @@
+Error fetching orders: No enum constant com.football.RomanianFootballBackend.Entity.Orders.OrderStatus.pending

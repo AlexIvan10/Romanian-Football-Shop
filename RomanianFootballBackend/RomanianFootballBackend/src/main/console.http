@@ -30,8 +30,8 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "admin7@example.com",
-  "password": "admin123",
+  "email": "admin2@example.com",
+  "password": "admin1234",
   "role": "ADMIN"
 }
 ###
@@ -43,8 +43,8 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "test1@example.com",
-  "password": "password123"
+  "email": "user@example.com",
+  "password": "user123"
 }
 ###
 
@@ -53,7 +53,7 @@ POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "admin7@example.com",
+  "email": "admin@example.com",
   "password": "admin123"
 }
 ###
@@ -89,8 +89,8 @@ GET http://localhost:8080/api/productInventory/product/1
 ###
 
 ### GET request to example server
-GET http://localhost:8080/api/product/1
-Authorization: Basic YWRtaW43QGV4YW1wbGUuY29tOmFkbWluMTIz
+GET http://localhost:8080/api/orders
+Authorization: Basic YWRtaW5AZXhhbXBsZS5jb206YWRtaW4xMjM=
 ###
 
 ###

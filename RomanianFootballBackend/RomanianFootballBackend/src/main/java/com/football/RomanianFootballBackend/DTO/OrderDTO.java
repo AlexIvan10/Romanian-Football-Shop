@@ -4,15 +4,27 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class OrderDTO {
+    private Integer id;
     private Integer userId;
+    private String userEmail;
     private Integer discountId;
+    private String discountCode;
     private BigDecimal totalPrice;
     private String status;
     private String city;
     private String street;
     private String number;
     private String postalCode;
-    private List<OrderItemDTO> orderItems;
+    private List<OrderItemResponseDTO> orderItems;
+
+    // Getters and Setters
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -22,12 +34,28 @@ public class OrderDTO {
         this.userId = userId;
     }
 
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
     public Integer getDiscountId() {
         return discountId;
     }
 
     public void setDiscountId(Integer discountId) {
         this.discountId = discountId;
+    }
+
+    public String getDiscountCode() {
+        return discountCode;
+    }
+
+    public void setDiscountCode(String discountCode) {
+        this.discountCode = discountCode;
     }
 
     public BigDecimal getTotalPrice() {
@@ -78,11 +106,87 @@ public class OrderDTO {
         this.postalCode = postalCode;
     }
 
-    public List<OrderItemDTO> getOrderItems() {
+    public List<OrderItemResponseDTO> getOrderItems() {
         return orderItems;
     }
 
-    public void setOrderItems(List<OrderItemDTO> orderItems) {
+    public void setOrderItems(List<OrderItemResponseDTO> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public static class OrderItemResponseDTO {
+        private Integer id;
+        private Integer productId;
+        private String productName;
+        private String player;
+        private String number;
+        private String size;
+        private Integer quantity;
+        private BigDecimal price;
+
+        // Getters and Setters
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Integer getProductId() {
+            return productId;
+        }
+
+        public void setProductId(Integer productId) {
+            this.productId = productId;
+        }
+
+        public String getProductName() {
+            return productName;
+        }
+
+        public void setProductName(String productName) {
+            this.productName = productName;
+        }
+
+        public String getPlayer() {
+            return player;
+        }
+
+        public void setPlayer(String player) {
+            this.player = player;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
+
+        public String getSize() {
+            return size;
+        }
+
+        public void setSize(String size) {
+            this.size = size;
+        }
+
+        public Integer getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(Integer quantity) {
+            this.quantity = quantity;
+        }
+
+        public BigDecimal getPrice() {
+            return price;
+        }
+
+        public void setPrice(BigDecimal price) {
+            this.price = price;
+        }
     }
 }

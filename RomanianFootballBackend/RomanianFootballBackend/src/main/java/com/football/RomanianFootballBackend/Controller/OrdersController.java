@@ -1,11 +1,14 @@
 package com.football.RomanianFootballBackend.Controller;
 
 import com.football.RomanianFootballBackend.DTO.CreateOrderDTO;
+import com.football.RomanianFootballBackend.DTO.OrderDTO;
 import com.football.RomanianFootballBackend.Entity.Orders;
 import com.football.RomanianFootballBackend.Service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -16,16 +19,25 @@ public class OrdersController {
 
     @GetMapping
     public ResponseEntity<?> getAllOrders() {
-        return ResponseEntity.ok(ordersService.getAllOrders());
+        try {
+            List<OrderDTO> orders = ordersService.getAllOrdersDTO();
+            return ResponseEntity.ok(orders);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error fetching orders: " + e.getMessage());
+        }
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getOrderById(@PathVariable int id) {
-        Orders order = ordersService.getOrderById(id);
-        if (order != null) {
-            return ResponseEntity.ok(order);
+        try {
+            OrderDTO order = ordersService.getOrderDTOById(id);
+            if (order != null) {
+                return ResponseEntity.ok(order);
+            }
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error fetching order: " + e.getMessage());
         }
-        return ResponseEntity.notFound().build();
     }
 
     @PostMapping

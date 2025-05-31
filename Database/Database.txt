@@ -1,0 +1,484 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema footballstore
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema footballstore
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `footballstore` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `footballstore` ;
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NULL DEFAULT NULL,
+  `password` VARCHAR(255) NULL DEFAULT NULL,
+  `role` ENUM('USER', 'ADMIN') NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`cart`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`cart` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `total_price` DECIMAL(38,2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK_UsersCart` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `FK_UsersCart`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `footballstore`.`user` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`product` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `description` TEXT NULL DEFAULT NULL,
+  `price` DECIMAL(38,2) NULL DEFAULT '0.00',
+  `team` VARCHAR(255) NULL DEFAULT NULL,
+  `licenced` TINYINT(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`cart_items`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`cart_items` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cart_id` INT NOT NULL,
+  `product_id` INT NOT NULL,
+  `player` VARCHAR(255) NULL DEFAULT NULL,
+  `number` VARCHAR(255) NULL DEFAULT NULL,
+  `size` ENUM('S', 'M', 'L', 'XL', 'XXL') NOT NULL,
+  `quantity` INT NOT NULL,
+  `price` DECIMAL(38,2) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `cart_id` (`cart_id` ASC) VISIBLE,
+  INDEX `product_id` (`product_id` ASC) VISIBLE,
+  CONSTRAINT `cart_items_ibfk_1`
+    FOREIGN KEY (`cart_id`)
+    REFERENCES `footballstore`.`cart` (`id`)
+    ON DELETE CASCADE,
+  CONSTRAINT `cart_items_ibfk_2`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `footballstore`.`product` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`discount`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`discount` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `code` VARCHAR(255) NULL DEFAULT NULL,
+  `discount_percentage` INT NULL DEFAULT NULL,
+  `active` TINYINT(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`orders`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`orders` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `discount_id` INT NULL DEFAULT NULL,
+  `total_price` DECIMAL(38,2) NULL DEFAULT '0.00',
+  `status` ENUM('PENDING', 'COMPLETED', 'CANCELED') NULL DEFAULT NULL,
+  `city` VARCHAR(255) NULL DEFAULT NULL,
+  `street` VARCHAR(255) NULL DEFAULT NULL,
+  `number` VARCHAR(255) NULL DEFAULT NULL,
+  `postal_code` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK_UserOrders` (`user_id` ASC) VISIBLE,
+  INDEX `FK_OrdersDiscount` (`discount_id` ASC) VISIBLE,
+  CONSTRAINT `FK_OrdersDiscount`
+    FOREIGN KEY (`discount_id`)
+    REFERENCES `footballstore`.`discount` (`id`)
+    ON DELETE CASCADE,
+  CONSTRAINT `FK_UserOrders`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `footballstore`.`user` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 7
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`order_items`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`order_items` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `order_id` INT NOT NULL,
+  `product_id` INT NOT NULL,
+  `player` VARCHAR(255) NULL DEFAULT NULL,
+  `number` VARCHAR(255) NULL DEFAULT NULL,
+  `size` ENUM('S', 'M', 'L', 'XL', 'XXL') NOT NULL,
+  `quantity` INT NOT NULL,
+  `price` DECIMAL(38,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`id`),
+  INDEX `idx_product_id` (`product_id` ASC) VISIBLE,
+  INDEX `FK_OrderItemsOrders` (`order_id` ASC) VISIBLE,
+  CONSTRAINT `FK_OrderItemsOrders`
+    FOREIGN KEY (`order_id`)
+    REFERENCES `footballstore`.`orders` (`id`),
+  CONSTRAINT `FK_OrderItemsProduct`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `footballstore`.`product` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`product_inventory`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`product_inventory` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `product_id` INT NOT NULL,
+  `size` ENUM('S', 'M', 'L', 'XL', 'XXL') NOT NULL,
+  `quantity` INT NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `unique_product_size` (`product_id` ASC, `size` ASC) VISIBLE,
+  CONSTRAINT `product_inventory_ibfk_1`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `footballstore`.`product` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 46
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`product_photos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`product_photos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `product_id` INT NOT NULL,
+  `photo_url` VARCHAR(255) NOT NULL,
+  `is_primary` TINYINT(1) NULL DEFAULT '0',
+  `display_order` INT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  INDEX `idx_product_id` (`product_id` ASC) VISIBLE,
+  CONSTRAINT `FK_ProductPhotos`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `footballstore`.`product` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 20
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`review`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`review` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `product_id` INT NOT NULL,
+  `rating` INT NULL DEFAULT '1',
+  `comment` TEXT NULL DEFAULT NULL,
+  `created_at` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `idx_product_id` (`product_id` ASC) VISIBLE,
+  INDEX `FK_UsersReviews` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `FK_ReviewsProduct`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `footballstore`.`product` (`id`)
+    ON DELETE CASCADE,
+  CONSTRAINT `FK_UsersReviews`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `footballstore`.`user` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`wishlist`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`wishlist` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK_UsersWishlist` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `FK_UsersWishlist`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `footballstore`.`user` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `footballstore`.`wishlist_items`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `footballstore`.`wishlist_items` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `wishlist_id` INT NOT NULL,
+  `product_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `wishlist_id` (`wishlist_id` ASC) VISIBLE,
+  INDEX `product_id` (`product_id` ASC) VISIBLE,
+  CONSTRAINT `wishlist_items_ibfk_1`
+    FOREIGN KEY (`wishlist_id`)
+    REFERENCES `footballstore`.`wishlist` (`id`)
+    ON DELETE CASCADE,
+  CONSTRAINT `wishlist_items_ibfk_2`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `footballstore`.`product` (`id`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+USE `footballstore`;
+
+DELIMITER $$
+USE `footballstore`$$
+CREATE
+DEFINER=`root`@`localhost`
+TRIGGER `footballstore`.`create_cart_on_user_register`
+AFTER INSERT ON `footballstore`.`user`
+FOR EACH ROW
+BEGIN
+    IF NEW.role = 'USER' THEN
+        INSERT INTO cart (user_id) VALUES (NEW.id);
+    END IF;
+END$$
+
+USE `footballstore`$$
+CREATE
+DEFINER=`root`@`localhost`
+TRIGGER `footballstore`.`update_orders_total_on_delete`
+AFTER DELETE ON `footballstore`.`order_items`
+FOR EACH ROW
+BEGIN
+    DECLARE discount_percentage INT;
+    
+    -- Restore inventory
+    UPDATE product_inventory
+    SET quantity = quantity + OLD.quantity
+    WHERE product_id = OLD.product_id AND size = OLD.size;
+    
+    -- Get the discount percentage if exists and is active
+    SELECT d.discount_percentage INTO discount_percentage
+    FROM orders o
+    LEFT JOIN discount d ON o.discount_id = d.id AND d.active = 1
+    WHERE o.id = OLD.order_id;
+    
+    -- Update total price with discount if applicable
+    UPDATE orders o
+    SET total_price = (
+        CASE 
+            WHEN discount_percentage IS NOT NULL 
+            THEN (SELECT COALESCE(SUM(price), 0) FROM order_items WHERE order_id = OLD.order_id) * (1 - discount_percentage/100)
+            ELSE (SELECT COALESCE(SUM(price), 0) FROM order_items WHERE order_id = OLD.order_id)
+        END
+    )
+    WHERE o.id = OLD.order_id;
+END$$
+
+USE `footballstore`$$
+CREATE
+DEFINER=`root`@`localhost`
+TRIGGER `footballstore`.`update_orders_total_on_insert`
+AFTER INSERT ON `footballstore`.`order_items`
+FOR EACH ROW
+BEGIN
+    DECLARE discount_percentage INT;
+    
+    -- Get the discount percentage if exists and is active
+    SELECT d.discount_percentage INTO discount_percentage
+    FROM orders o
+    LEFT JOIN discount d ON o.discount_id = d.id AND d.active = 1
+    WHERE o.id = NEW.order_id;
+    
+    -- Update total price with discount if applicable
+    UPDATE orders o
+    SET total_price = (
+        CASE 
+            WHEN discount_percentage IS NOT NULL 
+            THEN (SELECT SUM(price) FROM order_items WHERE order_id = NEW.order_id) * (1 - discount_percentage/100)
+            ELSE (SELECT SUM(price) FROM order_items WHERE order_id = NEW.order_id)
+        END
+    )
+    WHERE o.id = NEW.order_id;
+END$$
+
+USE `footballstore`$$
+CREATE
+DEFINER=`root`@`localhost`
+TRIGGER `footballstore`.`update_orders_total_on_update`
+AFTER UPDATE ON `footballstore`.`order_items`
+FOR EACH ROW
+BEGIN
+    DECLARE discount_percentage INT;
+    
+    -- Get the discount percentage if exists and is active
+    SELECT d.discount_percentage INTO discount_percentage
+    FROM orders o
+    LEFT JOIN discount d ON o.discount_id = d.id AND d.active = 1
+    WHERE o.id = NEW.order_id;
+    
+    -- Update total price with discount if applicable
+    UPDATE orders o
+    SET total_price = (
+        CASE 
+            WHEN discount_percentage IS NOT NULL 
+            THEN (SELECT SUM(price) FROM order_items WHERE order_id = NEW.order_id) * (1 - discount_percentage/100)
+            ELSE (SELECT SUM(price) FROM order_items WHERE order_id = NEW.order_id)
+        END
+    )
+    WHERE o.id = NEW.order_id;
+END$$
+
+USE `footballstore`$$
+CREATE
+DEFINER=`root`@`localhost`
+TRIGGER `footballstore`.`update_price_order_items`
+BEFORE INSERT ON `footballstore`.`order_items`
+FOR EACH ROW
+BEGIN
+    DECLARE product_price DECIMAL(38,2);
+    DECLARE available_quantity INT;
+    
+    -- Get product price
+    SELECT price INTO product_price
+    FROM product
+    WHERE id = NEW.product_id;
+    
+    -- Check available quantity for specific size
+    SELECT quantity INTO available_quantity
+    FROM product_inventory
+    WHERE product_id = NEW.product_id AND size = NEW.size;
+    
+    -- Check if enough stock available
+    IF available_quantity < NEW.quantity THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Insufficient stock for this size';
+    END IF;
+    
+    -- Calculate total price for quantity
+    SET NEW.price = NEW.quantity * product_price;
+    
+    -- Update inventory
+    UPDATE product_inventory
+    SET quantity = quantity - NEW.quantity
+    WHERE product_id = NEW.product_id AND size = NEW.size;
+END$$
+
+USE `footballstore`$$
+CREATE
+DEFINER=`root`@`localhost`
+TRIGGER `footballstore`.`update_price_order_items_on_update`
+BEFORE UPDATE ON `footballstore`.`order_items`
+FOR EACH ROW
+BEGIN
+    DECLARE product_price DECIMAL(38,2);
+    DECLARE available_quantity INT;
+    DECLARE needed_quantity INT;
+    
+    -- Get product price
+    SELECT price INTO product_price
+    FROM product
+    WHERE id = NEW.product_id;
+    
+    -- If size or product changed, restore old quantity and check new stock
+    IF NEW.size != OLD.size OR NEW.product_id != OLD.product_id THEN
+        -- Restore old inventory
+        UPDATE product_inventory
+        SET quantity = quantity + OLD.quantity
+        WHERE product_id = OLD.product_id AND size = OLD.size;
+        
+        -- Check new inventory
+        SELECT quantity INTO available_quantity
+        FROM product_inventory
+        WHERE product_id = NEW.product_id AND size = NEW.size;
+        
+        IF available_quantity < NEW.quantity THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Insufficient stock for this size';
+        END IF;
+        
+        -- Update new inventory
+        UPDATE product_inventory
+        SET quantity = quantity - NEW.quantity
+        WHERE product_id = NEW.product_id AND size = NEW.size;
+    ELSE
+        -- If only quantity changed
+        IF NEW.quantity != OLD.quantity THEN
+            SET needed_quantity = NEW.quantity - OLD.quantity;
+            
+            SELECT quantity INTO available_quantity
+            FROM product_inventory
+            WHERE product_id = NEW.product_id AND size = NEW.size;
+            
+            IF (available_quantity < needed_quantity AND needed_quantity > 0) THEN
+                SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'Insufficient stock for this size';
+            END IF;
+            
+            -- Update inventory
+            UPDATE product_inventory
+            SET quantity = quantity - needed_quantity
+            WHERE product_id = NEW.product_id AND size = NEW.size;
+        END IF;
+    END IF;
+    
+    -- Calculate new total price
+    SET NEW.price = NEW.quantity * product_price;
+END$$
+
+
+DELIMITER ;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

@@ -4,6 +4,7 @@ import com.football.RomanianFootballBackend.DTO.CartItemDTO;
 import com.football.RomanianFootballBackend.DTO.ProductDTO;
 import com.football.RomanianFootballBackend.Entity.CartItems;
 import com.football.RomanianFootballBackend.Repository.CartItemsRepository;
+import com.football.RomanianFootballBackend.Repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,9 @@ public class CartItemsService {
 
     @Autowired
     private CartItemsRepository cartItemsRepository;
+
+    @Autowired
+    private CartRepository cartRepository;
 
     @Autowired
     private ProductService productService;
@@ -52,7 +56,10 @@ public class CartItemsService {
     }
 
     public CartItems addCartItems(CartItems cartItems) {
-        return cartItemsRepository.save(cartItems);
+        CartItems savedItem = cartItemsRepository.save(cartItems);
+        // Update cart total after adding item
+        updateCartTotal(cartItems.getCart().getId());
+        return savedItem;
     }
 
     @Transactional
@@ -64,13 +71,37 @@ public class CartItemsService {
                         // Update the price based on the new quantity
                         BigDecimal unitPrice = existingCartItems.getProduct().getPrice();
                         existingCartItems.setPrice(unitPrice.multiply(BigDecimal.valueOf(updatedCartItems.getQuantity())));
+
+                        CartItems saved = cartItemsRepository.save(existingCartItems);
+                        // Update cart total after item update
+                        updateCartTotal(existingCartItems.getCart().getId());
+                        return saved;
                     }
                     return cartItemsRepository.save(existingCartItems);
                 })
                 .orElse(null);
     }
 
+    @Transactional
     public void deleteCartItems(int id) {
-        cartItemsRepository.deleteById(id);
+        CartItems item = cartItemsRepository.findById(id).orElse(null);
+        if (item != null) {
+            Integer cartId = item.getCart().getId();
+            cartItemsRepository.deleteById(id);
+            // Update cart total after item deletion
+            updateCartTotal(cartId);
+        }
+    }
+
+    private void updateCartTotal(Integer cartId) {
+        List<CartItems> items = cartItemsRepository.findByCartId(cartId);
+        BigDecimal total = items.stream()
+                .map(CartItems::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        cartRepository.findById(cartId).ifPresent(cart -> {
+            cart.setTotalPrice(total);
+            cartRepository.save(cart);
+        });
     }
 }

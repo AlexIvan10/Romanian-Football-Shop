@@ -63,6 +63,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Spring Boot.RomanianFootballBackendApplication.executor&quot;: &quot;Run&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/UTCN/PS/frontend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -85,16 +86,16 @@
     <configuration name="console | #10" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#10" index="10" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="console | #12" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#12" index="12" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration name="console | #13" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#13" index="13" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="console | #14" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#14" index="14" runType="Run single request">
+    <configuration name="console | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#6" index="6" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="console | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#6" index="6" runType="Run single request">
+    <configuration name="console | #7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#7" index="7" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="console | #8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/RomanianFootballBackend/src/main/console.http" executionIdentifier="#8" index="8" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="RomanianFootballBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -106,11 +107,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.console | #10" />
-        <item itemvalue="HTTP Request.console | #6" />
-        <item itemvalue="HTTP Request.console | #12" />
         <item itemvalue="HTTP Request.console | #13" />
-        <item itemvalue="HTTP Request.console | #14" />
+        <item itemvalue="HTTP Request.console | #7" />
+        <item itemvalue="HTTP Request.console | #6" />
+        <item itemvalue="HTTP Request.console | #8" />
+        <item itemvalue="HTTP Request.console | #10" />
       </list>
     </recent_temporary>
   </component>
@@ -182,6 +183,32 @@
       <workItem from="1737156127696" duration="1870000" />
       <workItem from="1738344572659" duration="983000" />
       <workItem from="1741090479358" duration="296000" />
+      <workItem from="1742289570987" duration="10000" />
+      <workItem from="1742302840146" duration="74000" />
+      <workItem from="1743952678541" duration="10000" />
+      <workItem from="1744727260631" duration="968000" />
+      <workItem from="1744879007373" duration="24000" />
+      <workItem from="1745576092707" duration="224000" />
+      <workItem from="1745592081899" duration="930000" />
+      <workItem from="1745593270134" duration="580000" />
+      <workItem from="1745749122986" duration="60000" />
+      <workItem from="1746138452759" duration="352000" />
+      <workItem from="1746142997342" duration="8000" />
+      <workItem from="1746181442260" duration="8000" />
+      <workItem from="1746190100440" duration="760000" />
+      <workItem from="1748009561357" duration="1402000" />
+      <workItem from="1748024555737" duration="619000" />
+      <workItem from="1748037530476" duration="940000" />
+      <workItem from="1748041680408" duration="662000" />
+      <workItem from="1748079901700" duration="4965000" />
+      <workItem from="1748187012259" duration="5969000" />
+      <workItem from="1748211329930" duration="3281000" />
+      <workItem from="1748253188912" duration="2379000" />
+      <workItem from="1748352063487" duration="863000" />
+      <workItem from="1748352984067" duration="186000" />
+      <workItem from="1748355772406" duration="30000" />
+      <workItem from="1748355866470" duration="660000" />
+      <workItem from="1748677244791" duration="2714000" />
     </task>
     <servers />
   </component>

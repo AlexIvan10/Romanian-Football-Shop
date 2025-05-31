@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class UserController {
 
     @Autowired
@@ -74,18 +75,4 @@ public class UserController {
             return ResponseEntity.badRequest().body("Error updating user: " + e.getMessage());
         }
     }
-
-//    @DeleteMapping
-//    public ResponseEntity<?> deleteCurrentUser(Authentication authentication) {
-//        try {
-//            String email = authentication.getName();
-//            User currentUser = userService.findByEmail(email)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//
-//            userService.deleteUser(currentUser.getId());
-//            return ResponseEntity.ok("User deleted successfully");
-//        } catch (Exception e) {
-//            return ResponseEntity.badRequest().body("Error deleting user: " + e.getMessage());
-//        }
-//    }
 }

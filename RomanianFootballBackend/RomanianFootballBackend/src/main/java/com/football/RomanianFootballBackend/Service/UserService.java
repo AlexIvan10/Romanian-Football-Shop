@@ -35,27 +35,15 @@ public class UserService {
             throw new RuntimeException("Email already registered");
         }
 
-        if (user.getRole() == null)
+        if (user.getRole() == null) {
             user.setRole(User.Role.USER);
+        }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
-    public User loginUser(String email, String password) {
-        try {
-            User user = userRepository.findByEmail(email)
-                    .orElseThrow(() -> new RuntimeException("User not found"));
-
-            if (passwordEncoder.matches(password, user.getPassword())) {
-                return user;
-            } else {
-                throw new RuntimeException("Invalid password");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Login failed: " + e.getMessage());
-        }
-    }
+    // Remove the old loginUser method since authentication is now handled by Spring Security
 
     public User addUserByAdmin(User user) {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {

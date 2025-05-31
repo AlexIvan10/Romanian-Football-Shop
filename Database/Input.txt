@@ -1,0 +1,138 @@
+INSERT INTO product_inventory (product_id, size, quantity) VALUES
+(1, 'S', 25), (1, 'M', 40), (1, 'L', 35), (1, 'XL', 20), (1, 'XXL', 10),
+(2, 'S', 20), (2, 'M', 35), (2, 'L', 30), (2, 'XL', 25), (2, 'XXL', 15),
+(3, 'S', 30), (3, 'M', 45), (3, 'L', 40), (3, 'XL', 30), (3, 'XXL', 12),
+(4, 'S', 18), (4, 'M', 32), (4, 'L', 28), (4, 'XL', 22), (4, 'XXL', 8),
+(5, 'S', 15), (5, 'M', 28), (5, 'L', 25), (5, 'XL', 18), (5, 'XXL', 6),
+(6, 'S', 22), (6, 'M', 38), (6, 'L', 33), (6, 'XL', 26), (6, 'XXL', 11),
+(7, 'S', 19), (7, 'M', 34), (7, 'L', 29), (7, 'XL', 21), (7, 'XXL', 9),
+(8, 'S', 24), (8, 'M', 41), (8, 'L', 36), (8, 'XL', 28), (8, 'XXL', 13),
+(9, 'S', 40), (9, 'M', 50), (9, 'L', 50), (9, 'XL', 30), (9, 'XXL', 15);
+
+INSERT INTO product_photos (product_id, photo_url, is_primary, display_order) VALUES
+(1, '/images/products/barcelona_2024_2025_home_1.jpg', 1, 1),
+(1, '/images/products/barcelona_2024_2025_home_2.jpg', 0, 2),
+(2, '/images/products/real_madrid_2024_2025_home_1.jpg', 1, 1),
+(2, '/images/products/real_madrid_2024_2025_home_2.jpg', 0, 2),
+(3, '/images/products/manchester_city_2024_2025_home_1.jpg', 1, 1),
+(3, '/images/products/manchester_city_2024_2025_home_2.jpg', 0, 2),
+(4, '/images/products/liverpool_2024_2025_home_1.jpg', 1, 1),
+(4, '/images/products/liverpool_2024_2025_home_2.jpg', 0, 2),
+(5, '/images/products/inter_milan_2024_2025_home_1.jpg', 1, 1),
+(5, '/images/products/inter_milan_2024_2025_home_2.jpg', 0, 2),
+(6, '/images/products/ac_milan_2024_2025_home_1.jpg', 1, 1),
+(6, '/images/products/ac_milan_2024_2025_home_2.jpg', 0, 2),
+(7, '/images/products/bayern_2024_2025_home_1.jpg', 1, 1),
+(7, '/images/products/bayern_2024_2025_home_2.jpg', 0, 2),
+(8, '/images/products/arsenal_2024_2025_home_1.jpg', 1, 1),
+(8, '/images/products/arsenal_2024_2025_home_2.jpg', 0, 2),
+(9, '/images/products/barcelona_travis_2024_2025_home_1.jpg', 1, 1),
+(9, '/images/products/barcelona_travis_2024_2025_home_2.jpg', 0, 2),
+(9, '/images/products/barcelona_travis_2024_2025_home_3.jpg', 0, 3);
+
+INSERT INTO discount (code, discount_percentage, active) VALUES
+('WELCOME10', 10, 1),
+('STUDENT15', 15, 1),
+('SUMMER20', 20, 1),
+('BLACKFRIDAY30', 30, 0),
+('NEWYEAR25', 25, 0);
+
+INSERT INTO product (name, description, price, team, licenced) VALUES
+('FC Barcelona Home Shirt 2024/25', 'Premium Football Jersey – Comfort and Performance on the Field
+
+Combine style, comfort, and performance with this high-quality football jersey, specially designed for players and fans alike. Made from a blend of 100% breathable polyester and elastane for flexibility, this jersey offers optimal ventilation and exceptional freedom of movement.
+
+✔ Premium Materials: Ultra-light polyester for quick sweat wicking and elastane for a perfect fit.
+✔ Dry-Fit Technology: Keeps your skin dry and enhances comfort during play.
+✔ Reinforced Seams: Ensure durability and resistance to wear and tear.
+✔ Modern Design: Ergonomic cut for a dynamic look and lightweight feel.
+
+Perfect for training sessions, official matches, or cheering on your favorite team from the stands!', 199.99, 'FC Barcelona', 1),
+
+('Real Madrid Home Shirt 2024/25', 'Premium Football Jersey – Comfort and Performance on the Field
+
+Combine style, comfort, and performance with this high-quality football jersey, specially designed for players and fans alike. Made from a blend of 100% breathable polyester and elastane for flexibility, this jersey offers optimal ventilation and exceptional freedom of movement.
+
+✔ Premium Materials: Ultra-light polyester for quick sweat wicking and elastane for a perfect fit.
+✔ Dry-Fit Technology: Keeps your skin dry and enhances comfort during play.
+✔ Reinforced Seams: Ensure durability and resistance to wear and tear.
+✔ Modern Design: Ergonomic cut for a dynamic look and lightweight feel.
+
+Perfect for training sessions, official matches, or cheering on your favorite team from the stands!', 199.99, 'Real Madrid', 1),
+
+('Manchester City Shirt 2024/25', 'Premium Football Jersey – Comfort and Performance on the Field
+
+Combine style, comfort, and performance with this high-quality football jersey, specially designed for players and fans alike. Made from a blend of 100% breathable polyester and elastane for flexibility, this jersey offers optimal ventilation and exceptional freedom of movement.
+
+✔ Premium Materials: Ultra-light polyester for quick sweat wicking and elastane for a perfect fit.
+✔ Dry-Fit Technology: Keeps your skin dry and enhances comfort during play.
+✔ Reinforced Seams: Ensure durability and resistance to wear and tear.
+✔ Modern Design: Ergonomic cut for a dynamic look and lightweight feel.
+
+Perfect for training sessions, official matches, or cheering on your favorite team from the stands!', 199.99, 'Manchester United', 1),
+
+('Liverpool FC Home Shirt 2024/25', 'Premium Football Jersey – Comfort and Performance on the Field
+
+Combine style, comfort, and performance with this high-quality football jersey, specially designed for players and fans alike. Made from a blend of 100% breathable polyester and elastane for flexibility, this jersey offers optimal ventilation and exceptional freedom of movement.
+
+✔ Premium Materials: Ultra-light polyester for quick sweat wicking and elastane for a perfect fit.
+✔ Dry-Fit Technology: Keeps your skin dry and enhances comfort during play.
+✔ Reinforced Seams: Ensure durability and resistance to wear and tear.
+✔ Modern Design: Ergonomic cut for a dynamic look and lightweight feel.
+
+Perfect for training sessions, official matches, or cheering on your favorite team from the stands!', 199.99, 'Liverpool FC', 1),
+
+('Paris Saint-Germain Home Shirt 2024/25', 'Premium Football Jersey – Comfort and Performance on the Field
+
+Combine style, comfort, and performance with this high-quality football jersey, specially designed for players and fans alike. Made from a blend of 100% breathable polyester and elastane for flexibility, this jersey offers optimal ventilation and exceptional freedom of movement.
+
+✔ Premium Materials: Ultra-light polyester for quick sweat wicking and elastane for a perfect fit.
+✔ Dry-Fit Technology: Keeps your skin dry and enhances comfort during play.
+✔ Reinforced Seams: Ensure durability and resistance to wear and tear.
+✔ Modern Design: Ergonomic cut for a dynamic look and lightweight feel.
+
+Perfect for training sessions, official matches, or cheering on your favorite team from the stands!', 199.99, 'Paris Saint-Germain', 1),
+
+('AC Milan Home Shirt 2024/25', 'Premium Football Jersey – Comfort and Performance on the Field
+
+Combine style, comfort, and performance with this high-quality football jersey, specially designed for players and fans alike. Made from a blend of 100% breathable polyester and elastane for flexibility, this jersey offers optimal ventilation and exceptional freedom of movement.
+
+✔ Premium Materials: Ultra-light polyester for quick sweat wicking and elastane for a perfect fit.
+✔ Dry-Fit Technology: Keeps your skin dry and enhances comfort during play.
+✔ Reinforced Seams: Ensure durability and resistance to wear and tear.
+✔ Modern Design: Ergonomic cut for a dynamic look and lightweight feel.
+
+Perfect for training sessions, official matches, or cheering on your favorite team from the stands!', 199.99, 'AC Milan', 1),
+
+('Bayern Munich Home Shirt 2024/25', 'Premium Football Jersey – Comfort and Performance on the Field
+
+Combine style, comfort, and performance with this high-quality football jersey, specially designed for players and fans alike. Made from a blend of 100% breathable polyester and elastane for flexibility, this jersey offers optimal ventilation and exceptional freedom of movement.
+
+✔ Premium Materials: Ultra-light polyester for quick sweat wicking and elastane for a perfect fit.
+✔ Dry-Fit Technology: Keeps your skin dry and enhances comfort during play.
+✔ Reinforced Seams: Ensure durability and resistance to wear and tear.
+✔ Modern Design: Ergonomic cut for a dynamic look and lightweight feel.
+
+Perfect for training sessions, official matches, or cheering on your favorite team from the stands!', 199.99, 'Bayern Munich', 1),
+
+('Arsenal FC Home Shirt 2024/25', 'Premium Football Jersey – Comfort and Performance on the Field
+
+Combine style, comfort, and performance with this high-quality football jersey, specially designed for players and fans alike. Made from a blend of 100% breathable polyester and elastane for flexibility, this jersey offers optimal ventilation and exceptional freedom of movement.
+
+✔ Premium Materials: Ultra-light polyester for quick sweat wicking and elastane for a perfect fit.
+✔ Dry-Fit Technology: Keeps your skin dry and enhances comfort during play.
+✔ Reinforced Seams: Ensure durability and resistance to wear and tear.
+✔ Modern Design: Ergonomic cut for a dynamic look and lightweight feel.
+
+Perfect for training sessions, official matches, or cheering on your favorite team from the stands!', 199.99, 'Arsenal FC', 1),
+
+('FC Barcelona Travis Scott Special Edition Shirt 2024/25', 'Premium Football Jersey – Comfort and Performance on the Field
+
+Combine style, comfort, and performance with this high-quality football jersey, specially designed for players and fans alike. Made from a blend of 100% breathable polyester and elastane for flexibility, this jersey offers optimal ventilation and exceptional freedom of movement.
+
+✔ Premium Materials: Ultra-light polyester for quick sweat wicking and elastane for a perfect fit.
+✔ Dry-Fit Technology: Keeps your skin dry and enhances comfort during play.
+✔ Reinforced Seams: Ensure durability and resistance to wear and tear.
+✔ Modern Design: Ergonomic cut for a dynamic look and lightweight feel.
+
+Perfect for training sessions, official matches, or cheering on your favorite team from the stands!', 249.99, 'FC Barcelona', 1);
